@@ -1,4 +1,116 @@
 ---
 // src/pages/index.astro
-return Astro.redirect('/N1/sommaire_pratique_N1');
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Session from '../components/Session.astro';
+import LevelCard from '../components/LevelCard.astro';
+import '../styles/style.css';
 ---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Plateforme pédagogique fédérale FFESSM — Sommaire global des formations Niveau 1 (PE20) et Niveau 2 (PA20 / PE40)." />
+  <title>Pédagogie Plongée — Formations fédérales</title>
+</head>
+<body>
+  <Header
+    variant="hero"
+    eyebrow="Formation fédérale · FFESSM"
+    title="Pédagogie Plongée"
+    description="Fiches de séances, progressions et repères pédagogiques conformes au Manuel de Formation Technique (MFT) pour l'encadrement des plongeurs."
+  />
+
+  <main class="container">
+    <!-- CADRE N1 -->
+    <LevelCard
+      code="N1"
+      title="Plongeur Niveau 1"
+      subtitle="PE20 · Plongeur Encadré 20 m"
+      description="Le plongeur Niveau 1 évolue au sein d’une palanquée guidée jusqu'à 20 m par un Guide de Palanquée (N4 minimum). La formation vise l'aisance technique, la stabilité au gilet et l'application stricte des règles de sécurité."
+      open={true}
+    >
+      <Session
+        id="n1-prat"
+        title="Sommaire pratique — Les 16 séances"
+        tagClass="water"
+        tagLabel="Bassin & Mer"
+        competenceTags="C1 · C2 · C3 · C6 · C7"
+        description="Progression complète : gréement, immersion, vidage de masque, stabilisation fine, réaction aux pannes d'air et tenue de palanquée."
+        mftText="Validation des compétences de terrain PE20 du MFT."
+        courseUrl={`${import.meta.env.BASE_URL}/N1/sommaire_pratique_N1`}
+        checkpoints={[
+          "C1 : S'équiper, déséquiper et vérifier son matériel au sec.",
+          "C2 : S'immerger, s'équilibrer et se propulser sans abîmer les fonds.",
+          "C3 : Maintenir sa position dans la palanquée et surveiller son manomètre.",
+          "C6 : Réagir calmement aux pannes d'air et accepter l'assistance du guide."
+        ]}
+      />
+
+      <Session
+        id="n1-theo"
+        title="Connaissances théoriques associées (C8)"
+        tagClass="land"
+        tagLabel="Théorie / Salle"
+        competenceTags="C8"
+        description="Notions fondamentales de physique appliquée (pression, volume), barotraumatismes majeurs (sinus, oreilles, surpression pulmonaire) et environnement marin."
+        mftText="C8 — Connaissances théoriques en appui de la pratique N1."
+        courseUrl={`${import.meta.env.BASE_URL}/N1/Theorie/sommaire_theorie_N1`}
+        checkpoints={[
+          "Règle absolue : ventilation continue, ne jamais bloquer sa respiration.",
+          "Équilibrage tympanique précoce et sans forcer.",
+          "Relation pression/volume (Loi de Boyle-Mariotte).",
+          "Respect de la faune, de la flore et des réglementations locales."
+        ]}
+      />
+    </LevelCard>
+
+    <!-- CADRE N2 -->
+    <LevelCard
+      code="N2"
+      title="Plongeur Niveau 2"
+      subtitle="PA20 (Autonomie 20 m) · PE40 (Espace lointain)"
+      description="Le Niveau 2 ouvre les portes de l'autonomie relative en binôme majeur jusqu'à 20 m (PA20) ainsi que la découverte de l'espace lointain jusqu'à 40 m sous supervision (PE40). Il demande une grande rigueur dans l'assistance et la décompression."
+      open={false}
+    >
+      <Session
+        id="n2-prat"
+        title="Sommaire pratique — Autonomie et sauvetage"
+        tagClass="open"
+        tagLabel="Milieu naturel"
+        competenceTags="C1 à C6"
+        description="Maîtrise de la Remontée Assistée (RAE) depuis 20 m, largage du parachute de palier, gestion fine de l'orientation naturelle et au compas, et aisance à 40 m."
+        mftText="Validation conjointe des prérogatives PA20 et PE40."
+        courseUrl={`${import.meta.env.BASE_URL}/N2/sommaire_pratique_N2`}
+        checkpoints={[
+          "Assistance d’un équipier syncope/panne d'air à 20 m (vitesse 10 m/min).",
+          "Déploiement du parachute de palier sans variation de profondeur.",
+          "Navigation au compas et retour au mouillage en binôme autonome.",
+          "Gestion de la stabilisation et de la lucidité dans la zone des 40 m."
+        ]}
+      />
+
+      <Session
+        id="n2-theo"
+        title="Physique, décompression et tables MN90"
+        tagClass="land"
+        tagLabel="Théorie approfondie"
+        competenceTags="C8"
+        description="Lois de Dalton (pressions partielles, toxicité O2), Henry (dissolution, saturation), calculs de décompression avec les tables fédérales MN90 et protocoles de secours en mer."
+        mftText="C8 — Examen théorique écrit ou e-learning officiel FFESSM."
+        courseUrl={`${import.meta.env.BASE_URL}/N2/Theorie/sommaire_theorie_N2`}
+        checkpoints={[
+          "Calculs d'autonomie en air et consommations volumiques équivalentes.",
+          "Planification de plongées consécutives et successives aux tables MN90.",
+          "Détection précoce de la narcose à l'azote et de l'essoufflement.",
+          "Alerte de secours en mer (CROSS via VHF 16 ou téléphone 196)."
+        ]}
+      />
+    </LevelCard>
+
+    <Footer version="1.0" note="Portail pédagogique fédéral d'entraînement — Non substituable au MFT officiel de la FFESSM." />
+  </main>
+</body>
+</html>

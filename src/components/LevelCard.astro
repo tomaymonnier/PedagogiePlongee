@@ -1,0 +1,147 @@
+---
+// src/components/LevelCard.astro
+interface Props {
+  code: string;        // Ex: "N1", "N2"
+  title: string;       // Ex: "Formation Niveau 1"
+  subtitle: string;    // Ex: "PE20 — Plongeur Encadré 20 m"
+  description?: string;
+  open?: boolean;
+}
+
+const { code, title, subtitle, description, open = false } = Astro.props;
+---
+
+<details class="level-card" open={open}>
+  <summary class="level-summary">
+    <div class="level-badge">{code}</div>
+    <div class="level-meta">
+      <h2 class="level-title">{title}</h2>
+      <div class="level-subtitle">{subtitle}</div>
+    </div>
+    <div class="level-arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </summary>
+
+  <div class="level-content">
+    {description && <p class="level-description">{description}</p>}
+    <div class="session-list">
+      <slot />
+    </div>
+  </div>
+</details>
+
+<style>
+  .level-card {
+    background: #ffffff;
+    border: 1px solid #dce2e6;
+    border-radius: 14px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .level-card:hover {
+    border-color: #b0c4de;
+  }
+
+  .level-card[open] {
+    border-color: #0b5394;
+    box-shadow: 0 8px 24px rgba(11, 83, 148, 0.1);
+  }
+
+  .level-summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.75rem;
+    background: #f8fafc;
+    border-bottom: 1px solid transparent;
+    user-select: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .level-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .level-card[open] .level-summary {
+    background: #f0f7ff;
+    border-bottom-color: #e2e8f0;
+  }
+
+  /* Badge graphique N1 / N2 */
+  .level-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.8rem;
+    height: 3.8rem;
+    background: linear-gradient(135deg, #0b5394 0%, #1f77b4 100%);
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(11, 83, 148, 0.25);
+  }
+
+  .level-meta {
+    flex: 1;
+  }
+
+  .level-title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.2;
+  }
+
+  .level-subtitle {
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0b5394;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Flèche animée */
+  .level-arrow {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .level-card[open] .level-arrow {
+    transform: rotate(180deg);
+    background: #0b5394;
+    border-color: #0b5394;
+    color: #ffffff;
+  }
+
+  .level-content {
+    padding: 1.75rem;
+    background: #ffffff;
+  }
+
+  .level-description {
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4a5568;
+  }
+</style>
