@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  duration?: string;
+  objective?: string;
+}
+
+const { title, duration, objective } = Astro.props;
+---
+
+<article class="exercise">
+  <h3>
+    {title} {duration && <span class="duration">{duration}</span>}
+  </h3>
+  {objective && (
+    <p class="meta">
+      <strong>Objectif :</strong> {objective}
+    </p>
+  )}
+  <slot />
+</article>

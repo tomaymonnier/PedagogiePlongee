@@ -1,0 +1,30 @@
+---
+interface Props {
+  criteria: string[];
+}
+
+const { criteria } = Astro.props;
+---
+
+<div class="table-wrap">
+  <table class="eval-table">
+    <thead>
+      <tr>
+        <th>Critère observable</th>
+        <th>Acquis</th>
+        <th>À retravailler</th>
+        <th>Non évalué</th>
+      </tr>
+    </thead>
+    <tbody>
+      {criteria.map((item) => (
+        <tr>
+          <td>{item}</td>
+          <td>☐</td>
+          <td>☐</td>
+          <td>☐</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

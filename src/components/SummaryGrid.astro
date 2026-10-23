@@ -1,0 +1,21 @@
+---
+export interface SummaryItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  items: SummaryItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="summary-grid">
+  {items.map((item) => (
+    <div class="summary-item">
+      <strong>{item.label}</strong>
+      <span>{item.value}</span>
+    </div>
+  ))}
+</div>

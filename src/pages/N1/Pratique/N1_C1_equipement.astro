@@ -1,0 +1,346 @@
+---
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Callout from '../../../components/Callout.astro';
+import SummaryGrid from '../../../components/SummaryGrid.astro';
+import Exercise from '../../../components/Exercise.astro';
+import EvalTable from '../../../components/EvalTable.astro';
+
+const summaryData = [
+  { label: "Public", value: "N1 débutant ou en début de progression" },
+  { label: "Durée indicative", value: "45 à 60 minutes" },
+  { label: "Lieu", value: "Bord de bassin, puis éventuellement zone peu profonde" },
+  { label: "Effectif de travail conseillé", value: "2 à 4 élèves, selon les conditions d’encadrement" },
+];
+
+const evaluationCriteria = [
+  "Identifie les principaux éléments de l’équipement.",
+  "Explique la fonction des composants essentiels.",
+  "Enfile et ajuste correctement son équipement.",
+  "Manipule le bloc avec des gestes sûrs et adaptés.",
+  "Participe aux contrôles essentiels avant immersion.",
+  "Participe efficacement au contrôle croisé.",
+  "Se déséquipe et range le matériel correctement.",
+  "Demande de l’aide en cas de doute."
+];
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Fiche pédagogique Initiateur FFESSM E1 : séance N1 C1 Équipement, objectifs, progression, exercices et évaluation." />
+  <title>Initiateur E1 — N1 C1 : Équipement</title>
+  <link rel="stylesheet" href="../../../../style.css" />
+</head>
+<body>
+  <Header
+    variant="page-header"
+    eyebrow="Formation fédérale · Plongée sous-marine · FFESSM"
+    title="N1 - C1 Équipement"
+    lead="Fiche de préparation pédagogique : accompagner un plongeur débutant de la découverte du matériel jusqu’à une routine d’équipement, de contrôle et de rangement sûre."
+  />
+
+  <main>
+    <nav class="panel" aria-label="Sommaire">
+      <h2>Sommaire</h2>
+      <ol>
+        <li><a href="#fiche">Fiche de séance</a></li>
+        <li><a href="#progression">Vue d’ensemble de la progression</a></li>
+        <li><a href="#exercices">Déroulé détaillé des exercices</a></li>
+        <li><a href="#anxiete">Adapter la séance à l’élève</a></li>
+        <li><a href="#evaluation">Grille d’observation</a></li>
+        <li><a href="#enseignant">Repères pour le stagiaire Initiateur</a></li>
+        <li><a href="#references">Références et limites</a></li>
+      </ol>
+    </nav>
+
+    <!-- SECTION 1 -->
+    <section id="fiche">
+      <h2>1. Fiche de séance</h2>
+      <SummaryGrid items={summaryData} />
+
+      <h3>Objectif général</h3>
+      <p>À la fin de la séance, l’élève doit pouvoir identifier les principaux éléments de son équipement, participer à la mise en place et aux vérifications essentielles, signaler une anomalie ou un doute, puis se déséquiper et ranger le matériel selon les consignes du club.</p>
+
+      <h3>Objectifs opérationnels</h3>
+      <ul>
+        <li>Nommer les principaux éléments et expliquer leur fonction générale.</li>
+        <li>Manipuler les éléments sans tirer sur les flexibles, forcer les boucles ou laisser tomber le bloc.</li>
+        <li>Enfiler et ajuster l’équipement avec une aide adaptée à son expérience.</li>
+        <li>Participer au contrôle de l’équipement avant immersion et au contrôle croisé.</li>
+        <li>Identifier les situations où il faut s’arrêter et demander l’aide d’un encadrant.</li>
+      </ul>
+
+      <h3>Prérequis</h3>
+      <ul>
+        <li>Connaître les consignes générales de sécurité de la séance.</li>
+        <li>Être capable de suivre des consignes simples et de signaler une difficulté.</li>
+        <li>Ne pas présenter de difficulté immédiate empêchant la manipulation du matériel dans de bonnes conditions.</li>
+      </ul>
+
+      <h3>Matériel</h3>
+      <ul>
+        <li>Bloc avec robinetterie, détendeur, manomètre et gilet stabilisateur adaptés.</li>
+        <li>Masque, palmes, tuba, combinaison et lest approprié.</li>
+        <li>Équipement de démonstration, checklist de contrôle et espace de rangement sécurisé.</li>
+      </ul>
+
+      <Callout type="warning" title="Sécurité">
+        Le bloc doit rester sécurisé et ne jamais être laissé en équilibre instable. L’élève ne doit pas porter seul une charge qu’il ne maîtrise pas. Le montage, l’ouverture de la bouteille et les contrôles fonctionnels sont réalisés selon les procédures du club, sous la supervision d’un encadrant compétent. Toute anomalie impose l’arrêt et la vérification par une personne qualifiée.
+      </Callout>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="progression">
+      <h2>2. Vue d’ensemble de la progression</h2>
+      <p>La logique pédagogique est la suivante : <strong>observer → identifier → manipuler → réaliser avec aide → réaliser seul → vérifier → ranger</strong>. La progression dépend des réactions de l’élève, pas uniquement du temps prévu.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Durée indicative</th>
+              <th>Intention pédagogique</th>
+              <th>Rôle de l’encadrant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Découverte</td>
+              <td>5–8 min</td>
+              <td>Réduire l’appréhension et établir les premiers repères.</td>
+              <td>Faire nommer, questionner, expliquer brièvement.</td>
+            </tr>
+            <tr>
+              <td>2. Manipulation guidée</td>
+              <td>8–10 min</td>
+              <td>Se familiariser avec les composants et commandes.</td>
+              <td>Montrer lentement, faire reproduire, corriger une chose à la fois.</td>
+            </tr>
+            <tr>
+              <td>3. Équipement avec aide</td>
+              <td>10–15 min</td>
+              <td>Assembler les étapes dans une routine cohérente.</td>
+              <td>Assister pour les charges et les vérifications de sécurité.</td>
+            </tr>
+            <tr>
+              <td>4. Contrôle croisé</td>
+              <td>8–10 min</td>
+              <td>Apprendre à vérifier et à communiquer avec un binôme.</td>
+              <td>Observer et intervenir immédiatement si un risque apparaît.</td>
+            </tr>
+            <tr>
+              <td>5. Déséquipement et bilan</td>
+              <td>5–10 min</td>
+              <td>Retirer, sécuriser et ranger le matériel.</td>
+              <td>Faire verbaliser les acquis et fixer la suite.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Les durées sont indicatives. Si l’équipement complet est nouveau pour les élèves, prévoir davantage de temps ou répartir le travail sur plusieurs séances.</p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="exercices">
+      <h2>3. Déroulé détaillé des exercices</h2>
+
+      <Exercise
+        title="Exercice 1 — « Je découvre mon équipement »"
+        duration="5–8 min"
+        objective="diminuer l’appréhension et identifier les principaux éléments."
+      >
+        <p><strong>Mise en place :</strong> dispose le matériel sur un banc ou au sol, avec le bloc sécurisé. L’élève n’a pas à porter le bloc pendant cette phase.</p>
+        <p><strong>Consignes possibles :</strong></p>
+        <ul>
+          <li>« Prends le temps d’observer le matériel. Tu peux le toucher et le manipuler. »</li>
+          <li>« À ton avis, à quoi sert cet élément ? »</li>
+          <li>« Quel élément te paraît le moins familier ? »</li>
+        </ul>
+        <p><strong>Progression :</strong></p>
+        <ol>
+          <li>L’enseignant nomme les composants et explique leur fonction en une phrase.</li>
+          <li>L’élève désigne les composants à la demande.</li>
+          <li>L’élève associe chaque composant à sa fonction générale.</li>
+          <li>L’enseignant change l’ordre des questions pour vérifier que l’élève ne récite pas simplement une séquence.</li>
+        </ol>
+        <p><strong>Critères de réussite :</strong> l’élève identifie les éléments principaux et comprend leur rôle général.</p>
+        <p><strong>Remédiation :</strong> regrouper le matériel par fonction : respirer, flotter, voir, se déplacer et se protéger du froid.</p>
+      </Exercise>
+
+      <Exercise
+        title="Exercice 2 — « Je manipule avant de m’équiper »"
+        duration="8–10 min"
+        objective="localiser les composants et manipuler les commandes sans pression temporelle."
+      >
+        <p><strong>Consignes et étapes :</strong></p>
+        <ol>
+          <li>Repérer les sangles, boucles et points de réglage du gilet (mnémotechnique AMIE/0213).</li>
+          <li>Enfiler et retirer le gilet sans bloc, si le modèle le permet.</li>
+          <li>Ajuster les sangles sans serrer excessivement.</li>
+          <li>Localiser le direct-system et les purges.</li>
+          <li>Identifier le manomètre et les détendeurs de la configuration utilisée.</li>
+          <li>Expliquer comment signaler une commande ou un élément qui semble anormal.</li>
+        </ol>
+        <p><strong>Critères de réussite :</strong> l’élève localise les éléments demandés, manipule les boucles sans forcer et ne tire pas sur les flexibles.</p>
+        <p><strong>Remédiation :</strong> montrer le geste au ralenti, puis le faire reproduire. Ne corriger qu’un point à la fois.</p>
+        <Callout title="Point de vigilance">
+          Les essais de gonflage et de dégonflage se font uniquement avec un équipement correctement assemblé et dans les conditions de sécurité définies par le club.
+        </Callout>
+      </Exercise>
+
+      <Exercise
+        title="Exercice 3 — « Je m’équipe avec un guide »"
+        duration="10–15 min"
+        objective="enchaîner les étapes d’équipement avec une aide progressivement réduite."
+      >
+        <h3>Niveau A — Je fais avec toi</h3>
+        <p>L’encadrant montre chaque geste. L’élève le reproduit. L’encadrant ou un équipier compétent aide à manipuler et positionner le bloc en toute sécurité.</p>
+        <h3>Niveau B — Je fais avec tes indications</h3>
+        <p>L’encadrant donne une consigne courte à chaque étape : « Vérifie la fixation », « Contrôle ton gilet », « Où est ton manomètre ? ». L’élève effectue l’action et explique ce qu’il vérifie.</p>
+        <h3>Niveau C — Je fais et je verbalise</h3>
+        <p>L’élève réalise la séquence avec moins d’aide et verbalise les vérifications. L’encadrant observe sans souffler les réponses, sauf si une intervention est nécessaire à la sécurité.</p>
+        <p><strong>Critères de réussite :</strong></p>
+        <ul>
+          <li>Équipement ajusté et correctement fixé.</li>
+          <li>Flexibles correctement disposés et commandes accessibles.</li>
+          <li>Contrôles fonctionnels réalisés selon la procédure du club.</li>
+          <li>Pression contrôlée et jugée suffisante selon les consignes de la plongée.</li>
+          <li>L’élève se donne le temps nécessaire et demande de l’aide en cas de doute.</li>
+        </ul>
+        <p><strong>Remédiation :</strong> si l’élève perd le fil, revenir à deux ou trois étapes à la fois, puis réassembler la séquence. Ne pas introduire de difficulté supplémentaire tant que les gestes de sécurité ne sont pas fiables.</p>
+      </Exercise>
+
+      <Exercise
+        title="Exercice 4 — « Je contrôle mon binôme »"
+        duration="8–10 min"
+        objective="développer une routine de vérification croisée et la capacité à signaler un doute."
+      >
+        <p>En binôme, chaque élève vérifie l’équipement de l’autre avec une checklist. Le binôme réalise ensuite le contrôle en retour. L’enseignant observe et laisse l’élève verbaliser ses vérifications, mais intervient immédiatement en cas de risque.</p>
+        <h3>Checklist de contrôle</h3>
+        <ul class="checklist" id="buddy-checklist">
+          <li><label><input type="checkbox" /> Bloc stable et fixation contrôlée.</label></li>
+          <li><label><input type="checkbox" /> Gilet correctement ajusté.</label></li>
+          <li><label><input type="checkbox" /> Montage et fonctionnement du détendeur vérifiés selon la procédure du club.</label></li>
+          <li><label><input type="checkbox" /> Pression du bloc contrôlée et suffisante pour la plongée prévue.</label></li>
+          <li><label><input type="checkbox" /> Manomètre accessible et lisible.</label></li>
+          <li><label><input type="checkbox" /> Direct-system connecté et fonctionnement du gilet vérifié.</label></li>
+          <li><label><input type="checkbox" /> Purges repérées et accessibles.</label></li>
+          <li><label><input type="checkbox" /> Flexibles disposés sans gêne ni traction.</label></li>
+          <li><label><input type="checkbox" /> Lest adapté, sécurisé et conforme aux consignes.</label></li>
+          <li><label><input type="checkbox" /> Masque, palmes et accessoires prêts.</label></li>
+        </ul>
+        <p><strong>Critères de réussite :</strong> l’élève suit la checklist, comprend ce qu’il vérifie et sait arrêter le contrôle pour demander de l’aide si un élément est douteux.</p>
+        <p><strong>Remédiation :</strong> si un élément est oublié, demander « Qu’est-ce qui te permet de confirmer que ton binôme est prêt ? » plutôt que donner immédiatement la réponse.</p>
+        <Callout type="warning">
+          Le contrôle croisé ne remplace pas les contrôles techniques ni la responsabilité de l’encadrant. Un débutant ne doit pas être placé en situation de certifier seul la sécurité du matériel.
+        </Callout>
+      </Exercise>
+
+      <Exercise
+        title="Exercice 5 — « Je me déséquipe et je range »"
+        duration="5–10 min"
+        objective="retirer et ranger le matériel sans précipitation ni manipulation dangereuse."
+      >
+        <ol>
+          <li>Vérifier que la sortie de l’eau est terminée et que l’espace de rangement est dégagé.</li>
+          <li>Retirer l’équipement dans l’ordre adapté à la configuration et aux consignes du club.</li>
+          <li>Demander de l’aide pour manipuler le bloc lorsque nécessaire.</li>
+          <li>Poser et sécuriser le matériel aux emplacements prévus.</li>
+          <li>Identifier les opérations de rinçage, de rangement et les anomalies à signaler.</li>
+        </ol>
+        <p><strong>Critères de réussite :</strong> l’élève retire le matériel sans se mettre en difficulté, ne laisse pas tomber le bloc et respecte les consignes de rangement.</p>
+        <p><strong>Remédiation :</strong> décomposer les gestes difficiles et montrer les positions de manipulation qui réduisent les efforts.</p>
+      </Exercise>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="anxiete">
+      <h2>4. Adapter la séance à un élève anxieux</h2>
+      <p>Observe le comportement de l’élève autant que le résultat technique. Une progression réussie est une progression sûre, comprise et adaptée à la personne.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Observation</th>
+              <th>Adaptation pédagogique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>L’élève manipule le masque mais hésite devant le bloc.</td>
+              <td>Travailler d’abord avec le gilet seul, puis ajouter le bloc avec une assistance adaptée.</td>
+            </tr>
+            <tr>
+              <td>Il oublie plusieurs consignes.</td>
+              <td>Réduire le nombre d’étapes et utiliser une checklist visuelle.</td>
+            </tr>
+            <tr>
+              <td>Il serre excessivement les sangles ou force sur les boucles.</td>
+              <td>Montrer le geste lentement, puis le faire reproduire à sec.</td>
+            </tr>
+            <tr>
+              <td>Il craint de faire tomber le bloc.</td>
+              <td>Stabiliser le matériel et organiser une assistance physique adaptée ; ne pas lui demander de porter seul une charge qu’il ne maîtrise pas.</td>
+            </tr>
+            <tr>
+              <td>Il se précipite pour suivre les autres.</td>
+              <td>Rappeler que la qualité des contrôles prime sur la vitesse et adapter le rythme.</td>
+            </tr>
+            <tr>
+              <td>Il se bloque ou manifeste une anxiété importante.</td>
+              <td>Interrompre l’exercice, dialoguer et revenir à une étape plus simple. Ne jamais forcer la progression.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Question utile :</strong> « Qu’est-ce qui te semble encore difficile ou peu naturel ? » Elle permet de faire émerger les difficultés avant qu’elles ne deviennent des erreurs de manipulation.</p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="evaluation">
+      <h2>5. Grille d’observation en fin de séance</h2>
+      <p>Cette grille sert au suivi pédagogique de l’élève. Elle ne remplace pas une validation officielle du MFT.</p>
+      
+      <EvalTable criteria={evaluationCriteria} />
+
+      <h3>Bilan individuel</h3>
+      <p><strong>Points acquis :</strong> __________________________________________________________</p>
+      <p><strong>Points à retravailler :</strong> _____________________________________________________</p>
+      <p><strong>Objectif de la prochaine séance :</strong> ___________________________________________</p>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="enseignant">
+      <h2>6. Repères pour le stagiaire Initiateur</h2>
+      <p>Pour chaque sujet de pédagogie pratique, entraîne-toi à présenter cinq éléments :</p>
+      <ol>
+        <li><strong>Un objectif observable :</strong> ce que l’élève doit pouvoir faire à la fin.</li>
+        <li><strong>Une démonstration :</strong> courte, visible et adaptée à son niveau.</li>
+        <li><strong>Une consigne :</strong> simple, précise et donnée au bon moment.</li>
+        <li><strong>Des critères de réussite :</strong> ce que tu observes concrètement.</li>
+        <li><strong>Une remédiation :</strong> comment simplifier ou modifier la situation en cas d’échec.</li>
+      </ol>
+      <Callout>
+        <strong>À retenir :</strong> l’enjeu n’est pas seulement de montrer comment s’équiper. Il est de faire apprendre une routine sûre, de repérer les difficultés et d’ajuster ton enseignement à chaque élève.
+      </Callout>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section id="references">
+      <h2>7. Références et limites</h2>
+      <ul>
+        <li><a href="https://mft.ffessm.fr/" rel="noopener noreferrer">Manuel de Formation Technique (MFT) — site officiel FFESSM</a></li>
+        <li><a href="https://plongee.ffessm.fr/" rel="noopener noreferrer">Commission Technique Nationale / plongée FFESSM</a></li>
+      </ul>
+      <p>Cette fiche est une proposition de séance centrée sur l’équipement. Elle ne prétend pas reproduire mot pour mot l’ensemble des items C1 du MFT. Avant de l’utiliser en formation, vérifie les formulations et exigences dans la version du MFT en vigueur, ainsi que les procédures matérielles et de sécurité de ton club. La séance doit être validée et adaptée avec ton tuteur de stage.</p>
+    </section>
+  </main>
+
+  <Footer text="Fiche de travail pédagogique — Initiateur E1 · N1 C1 « Équipement » · Document autonome HTML/CSS." />
+</body>
+</html>

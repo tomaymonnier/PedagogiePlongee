@@ -1,0 +1,21 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  lead?: string;
+  variant?: 'hero' | 'page-header';
+}
+
+const { eyebrow, title, description, lead, variant = 'page-header' } = Astro.props;
+const subtitle = lead || description;
+const isHero = variant === 'hero';
+---
+
+<header class={isHero ? undefined : "page-header"}>
+  <div class={isHero ? "hero" : "header-inner"}>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    {subtitle && <p class={isHero ? undefined : "lead"}>{subtitle}</p>}
+  </div>
+</header>

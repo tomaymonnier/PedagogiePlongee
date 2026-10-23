@@ -1,0 +1,55 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  tagClass?: 'land' | 'water' | 'open' | string;
+  tagLabel: string;
+  competenceTags: string;
+  description: string;
+  mftText: string;
+  courseUrl: string;
+  checkpoints: string[];
+}
+
+const {
+  id,
+  title,
+  tagClass = 'water',
+  tagLabel,
+  competenceTags,
+  description,
+  mftText,
+  courseUrl,
+  checkpoints = []
+} = Astro.props;
+---
+
+<article class="session">
+  <div class="session-top">
+    <div class="check-wrap">
+      <input type="checkbox" class="session-check" id={id} aria-label={`${title} réalisée`} />
+    </div>
+    <div class="session-main">
+      <h3>{title}</h3>
+      <div class="meta">
+        <span class={`tag ${tagClass}`}>{tagLabel}</span>
+        <span class="tag">{competenceTags}</span>
+      </div>
+      <p>{description}</p>
+      <div class="competence"><strong>MFT associé :</strong> {mftText}</div>
+    </div>
+    <div class="session-actions">
+      <a class="course-link" href={courseUrl}>Ouvrir le cours ↗</a>
+    </div>
+  </div>
+  <div class="details">
+    <details>
+      <summary>Points de contrôle</summary>
+      <ul>
+        {checkpoints.map((point) => (
+          <li>{point}</li>
+        ))}
+      </ul>
+    </details>
+  </div>
+</article>

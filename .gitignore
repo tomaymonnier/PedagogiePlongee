@@ -1,0 +1,32 @@
+# Fichiers générés par Astro
+.astro/
+
+
+# Dépendances
+node_modules/
+
+# Environnement et secrets
+.env
+.env.production
+.env.local
+.env.*.local
+
+# Fichiers de cache et logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# Fichiers système (macOS et Windows)
+.DS_Store
+Thumbs.db
+
+# Configuration optionnelle de l'éditeur (VS Code, JetBrains)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

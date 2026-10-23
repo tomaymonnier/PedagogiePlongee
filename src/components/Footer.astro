@@ -1,0 +1,24 @@
+---
+interface Props {
+  text?: string;
+  version?: string;
+  note?: string;
+}
+
+const { text, version = "1.0", note } = Astro.props;
+---
+
+<footer class={text ? "page-footer" : undefined}>
+  {text ? (
+    <p>{text}</p>
+  ) : (
+    <>
+      <p>
+        <strong>Références utiles :</strong> 
+        <a href="https://mft.ffessm.fr/" target="_blank" rel="noopener">MFT FFESSM</a> · 
+        <a href="https://ffessm.fr/plongeur-niveau-1" target="_blank" rel="noopener">Présentation officielle du Plongeur Niveau 1</a>.
+      </p>
+      <p>Document de travail pédagogique — version {version} · {note}</p>
+    </>
+  )}
+</footer>
