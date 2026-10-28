@@ -1,0 +1,480 @@
+---
+// src/pages/N1/Pratique/N1_S05_Vider_Masque.astro
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Callout from '../../../components/Callout.astro';
+import SummaryGrid from '../../../components/SummaryGrid.astro';
+import Exercise from '../../../components/Exercise.astro';
+import EvalTable from '../../../components/EvalTable.astro';
+import '../../../styles/style.css';
+
+const summaryData = [
+  { label: "Milieu", value: "Milieu protégé" },
+  { label: "Compétences", value: "C2 · C3 · C6" },
+  { label: "Durée indicative", value: "45 à 60 min" }
+];
+
+const evaluationCriteria = [
+  "Accepte l'eau sur le visage",
+  "Respire calmement par la bouche au tuba sans masque",
+  "Comprend la dissociation nez / bouche",
+  "Réalise une immersion courte sans précipitation",
+  "Accepte une entrée d'eau progressive dans le masque",
+  "Conserve une ventilation maîtrisée sur détendeur",
+  "Chasse l'eau du masque par expiration nasale contrôlée",
+  "Retrouve ses repères et communique avec le moniteur"
+];
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S05 — Vider le masque et retrouver ses repères | Formation N1</title>
+  <link rel="stylesheet" href={`${import.meta.env.BASE_URL}/style.css`} />
+</head>
+
+<body>
+  <main class="page">
+    <Header
+      variant="page-header"
+      eyebrow="Formation Niveau 1 · Séance pratique S05"
+      title="Vider le masque et retrouver ses repères"
+      lead="S'habituer progressivement à l'eau sur le visage, dissocier la respiration par la bouche et les sensations au niveau du nez, puis apprendre à vider son masque sans perdre le contrôle de sa ventilation."
+    />
+
+    <!-- RÉSUMÉ EN-TÊTE FACTORISÉ -->
+    <SummaryGrid items={summaryData} />
+
+    <nav class="quicknav" aria-label="Navigation dans la fiche">
+      <a href="#objectifs">Objectifs</a>
+      <a href="#preparation">Préparation</a>
+      <a href="#deroulement">Déroulé</a>
+      <a href="#evaluation">Évaluation</a>
+      <a href="#securite">Sécurité</a>
+      <a href="#bilan">Bilan</a>
+    </nav>
+
+    <!-- SECTION 1 -->
+    <section id="objectifs" class="card">
+      <h2>1. Objectifs pédagogiques</h2>
+
+      <h3>Objectif général</h3>
+      <p>
+        À la fin de la séance, l'élève doit être capable d'accepter
+        progressivement la présence d'eau sur le visage et dans le masque,
+        de vider celui-ci avec une expiration nasale maîtrisée et de retrouver
+        une situation confortable sans précipitation.
+      </p>
+
+      <h3>Objectifs opérationnels</h3>
+      <ul>
+        <li>Accepter l'eau sur le visage sans réaction de panique.</li>
+        <li>Respirer par la bouche au tuba en gardant le contrôle de sa ventilation.</li>
+        <li>Découvrir la dissociation entre respiration buccale et sensations nasales.</li>
+        <li>Accepter une immersion courte et contrôlée, sans forcer ni prolonger l'apnée.</li>
+        <li>Accepter une entrée d'eau progressive dans le masque.</li>
+        <li>Expirer par le nez dans le masque afin d'en chasser l'eau.</li>
+        <li>Retrouver une vision et une respiration confortables après l'exercice.</li>
+        <li>Communiquer immédiatement avec l'encadrant en cas de gêne.</li>
+      </ul>
+
+      <h3>Compétences MFT associées</h3>
+      <ul>
+        <li><strong>C2 — Évoluer en environnement aquatique et subaquatique :</strong> accepter l'immersion et conserver une attitude maîtrisée.</li>
+        <li><strong>C3 — Évoluer en palanquée guidée :</strong> rester attentif au guide et retrouver ses repères après un exercice technique.</li>
+        <li><strong>C6 — Participer à la sécurité en plongée :</strong> signaler une difficulté et appliquer les consignes de l'encadrant.</li>
+      </ul>
+
+      <p class="notice">
+        Les compétences indiquées sont des associations pédagogiques à
+        confirmer avec le libellé et les attendus du MFT en vigueur.
+      </p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="preparation" class="card">
+      <h2>2. Préparation de la séance</h2>
+
+      <h3>Pré-requis</h3>
+      <ul>
+        <li>Être capable de rester sereinement en surface.</li>
+        <li>Accepter de mettre le visage dans l'eau, au moins progressivement.</li>
+        <li>Connaître les signes simples de communication avec le moniteur.</li>
+        <li>Avoir reçu les consignes de sécurité propres au site et à l'exercice.</li>
+      </ul>
+
+      <h3>Matériel</h3>
+      <ul>
+        <li>Masque adapté à la morphologie de l'élève.</li>
+        <li>Palmes et tuba.</li>
+        <li>Bloc, détendeur et gilet stabilisateur pour la partie équipée.</li>
+        <li>Équipement de sécurité et moyens de surveillance adaptés au site.</li>
+      </ul>
+
+      <h3>Organisation</h3>
+      <ul>
+        <li>Choisir une zone calme, peu profonde, avec un accès facile à la surface.</li>
+        <li>Commencer sans bloc et sans masque, pour réduire les contraintes matérielles.</li>
+        <li>Faire progresser chaque élève à son rythme : le passage à l'étape suivante dépend de son aisance réelle.</li>
+        <li>Prévoir un encadrement rapproché, en particulier lors des immersions sans masque et des premières mises en eau du masque.</li>
+      </ul>
+
+      <Callout title="Principe pédagogique">
+        ne pas commencer par le vidage complet du masque. L'élève doit d'abord
+        découvrir les sensations de l'eau sur le visage, comprendre qu'il peut
+        respirer par la bouche et apprendre à interrompre un exercice dès qu'il
+        ne se sent plus à l'aise.
+      </Callout>
+    </section>
+
+    <!-- SECTION 3 (EXERCICES FACTORISÉS) -->
+    <section id="deroulement" class="card">
+      <h2>3. Déroulé de la séance</h2>
+
+      <p>
+        Durée indicative : 45 à 60 minutes, briefing et bilan compris.
+        La progression ci-dessous est adaptable : si une étape provoque une
+        appréhension, rester sur cette étape ou revenir à la précédente.
+      </p>
+
+      <Exercise
+        title="Phase 1 — Briefing et accoutumance à l'eau"
+        duration="5 min"
+        objective="Présenter les exercices, rassurer l'élève et lui donner un moyen simple d'exprimer son inconfort."
+      >
+        <h4>Déroulement</h4>
+        <ol>
+          <li>Expliquer que la séance commence sans bloc et sans masque.</li>
+          <li>Montrer les exercices avant de demander à l'élève de les réaliser.</li>
+          <li>Présenter les signes convenus pour indiquer que tout va bien, demander une pause ou signaler une difficulté.</li>
+          <li>Inviter l'élève à mouiller progressivement le visage avec les mains, puis à s'approcher de la surface de l'eau.</li>
+          <li>Ne passer à l'étape suivante que lorsque l'élève accepte ces sensations sans précipitation.</li>
+        </ol>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève comprend les consignes.</li>
+          <li>Il sait demander une pause.</li>
+          <li>Il accepte le contact de l'eau sur le visage.</li>
+        </ul>
+      </Exercise>
+
+      <Exercise
+        title="Phase 2 — Dissociation nez / bouche en surface, sans masque"
+        duration="8 à 10 min"
+        objective="Découvrir la respiration par la bouche au tuba sans masque et s'habituer aux sensations de l'eau autour du nez, sans chercher à réaliser une performance respiratoire."
+      >
+        <h4>Étape A — Respiration par la bouche hors de l'eau</h4>
+        <ol>
+          <li>Faire tenir le tuba en bouche, sans masque.</li>
+          <li>Demander à l'élève de respirer calmement par la bouche, le visage hors de l'eau.</li>
+          <li>Faire remarquer la différence entre inspirer par la bouche et respirer spontanément par le nez.</li>
+          <li>Expliquer que, pour cet exercice, la respiration doit se faire par la bouche et non par le nez.</li>
+        </ol>
+
+        <h4>Étape B — Visage dans l'eau avec tuba</h4>
+        <ol>
+          <li>Placer l'élève en surface, dans une position confortable et stable.</li>
+          <li>Lui demander d'immerger progressivement le visage, en gardant le tuba hors de l'eau.</li>
+          <li>L'élève respire calmement par la bouche à travers le tuba.</li>
+          <li>Le moniteur observe les signes de gêne et rappelle que l'élève peut relever la tête à tout moment.</li>
+          <li>Si l'élève est à l'aise, proposer de laisser sortir doucement un peu d'air par le nez, sans forcer.</li>
+          <li>Revenir à une respiration buccale naturelle et terminer l'exercice dès que l'élève manifeste de la fatigue ou de l'inconfort.</li>
+        </ol>
+
+        <h4>Consignes à donner</h4>
+        <ul>
+          <li>« Respire tranquillement par la bouche. »</li>
+          <li>« Garde le tuba hors de l'eau. »</li>
+          <li>« Tu peux relever la tête à tout moment. »</li>
+          <li>« Si tu es à l'aise, essaie de laisser sortir un peu d'air par le nez, sans forcer. »</li>
+        </ul>
+
+        <h4>Points d'attention</h4>
+        <ul>
+          <li>Ne pas exiger une expiration nasale continue.</li>
+          <li>Ne pas demander à l'élève d'inspirer par le nez lorsque celui-ci est dans l'eau.</li>
+          <li>Si l'eau entre dans le nez et gêne l'élève, lui permettre de relever immédiatement la tête.</li>
+          <li>Ne pas multiplier les répétitions si l'élève commence à respirer de manière précipitée.</li>
+        </ul>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève accepte d'avoir le visage dans l'eau.</li>
+          <li>Il respire par la bouche au tuba sans précipitation.</li>
+          <li>Il peut relever la tête et communiquer avec le moniteur.</li>
+          <li>Il commence à distinguer la respiration buccale des sensations au niveau du nez.</li>
+        </ul>
+      </Exercise>
+
+      <Exercise
+        title="Phase 3 — Immersion courte sans bloc"
+        duration="5 à 8 min"
+        objective="Se familiariser avec les sensations du nez et du visage dans l'eau, lors d'une immersion volontaire courte, sans équipement respiratoire."
+      >
+        <h4>Déroulement</h4>
+        <ol>
+          <li>Faire observer une démonstration par le moniteur.</li>
+          <li>Vérifier que l'élève est calme en surface et comprend comment interrompre l'exercice.</li>
+          <li>Demander une immersion très courte, à faible profondeur, sans masque et sans tuba en bouche.</li>
+          <li>L'élève remonte librement dès qu'il le souhaite, sans attendre un signal de fin imposé.</li>
+          <li>À la surface, lui demander de retrouver une respiration normale et de signaler son ressenti.</li>
+          <li>Ne répéter que si l'élève est volontaire et parfaitement à l'aise.</li>
+        </ol>
+
+        <h4>Points d'attention</h4>
+        <ul>
+          <li>Cette étape n'est pas une épreuve d'apnée : aucune durée minimale n'est demandée.</li>
+          <li>Ne jamais demander d'hyperventilation avant l'immersion.</li>
+          <li>Ne pas forcer l'expiration par le nez ni demander de garder le visage immergé malgré l'inconfort.</li>
+          <li>Le moniteur reste à proximité immédiate et surveille l'élève en permanence.</li>
+        </ul>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève accepte une immersion courte et volontaire.</li>
+          <li>Il remonte sans précipitation et retrouve rapidement une respiration normale.</li>
+          <li>Il exprime clairement son ressenti.</li>
+        </ul>
+
+        <p class="notice">
+          Si cette étape n'apporte rien à l'élève ou augmente son appréhension,
+          il est préférable de la différer plutôt que de l'imposer.
+        </p>
+      </Exercise>
+
+      <Exercise
+        title="Phase 4 — Accepter l'eau dans le masque en surface"
+        duration="5 à 8 min"
+        objective="Se familiariser avec la présence d'eau dans le masque avant d'apprendre à le vider."
+      >
+        <h4>Déroulement</h4>
+        <ol>
+          <li>Faire remettre le masque à l'élève et vérifier son ajustement.</li>
+          <li>Commencer en surface, sans bloc, avec la tête hors de l'eau.</li>
+          <li>Demander à l'élève de décoller légèrement la jupe du masque sur une partie de son visage pour laisser entrer un peu d'eau.</li>
+          <li>Laisser l'élève identifier les sensations, puis lui faire retirer le masque ou relever la tête s'il le souhaite.</li>
+          <li>Répéter avec une quantité d'eau limitée uniquement si l'élève reste serein.</li>
+          <li>Expliquer que le vidage du masque sera travaillé ensuite avec un détendeur, en milieu protégé.</li>
+        </ol>
+
+        <h4>Consignes à donner</h4>
+        <ul>
+          <li>« On commence avec très peu d'eau. »</li>
+          <li>« Tu gardes le contrôle : si tu es gêné, tu arrêtes. »</li>
+          <li>« On ne cherche pas encore à vider le masque sous l'eau. »</li>
+        </ul>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève tolère une petite quantité d'eau dans le masque.</li>
+          <li>Il reste calme et sait communiquer son ressenti.</li>
+          <li>Il accepte de poursuivre sans précipitation.</li>
+        </ul>
+      </Exercise>
+
+      <Exercise
+        title="Phase 5 — Première mise en eau du masque avec détendeur"
+        duration="5 à 8 min"
+        objective="Transférer les acquis de surface à la situation de plongée équipée, tout en maintenant une respiration continue sur détendeur."
+      >
+        <h4>Déroulement</h4>
+        <ol>
+          <li>Équiper l'élève avec son bloc, son détendeur et son masque, puis vérifier l'équipement.</li>
+          <li>Installer l'élève dans une zone très peu profonde où il peut rester stable et remonter facilement.</li>
+          <li>Faire respirer calmement l'élève sur détendeur avant de commencer.</li>
+          <li>Sur consigne, faire entrer une petite quantité d'eau dans le masque en soulevant légèrement sa partie supérieure.</li>
+          <li>Maintenir l'exercice à ce niveau : l'objectif est uniquement d'accepter l'eau tout en continuant à respirer.</li>
+          <li>Faire interrompre l'exercice si l'élève perd son calme, puis retrouver une situation confortable.</li>
+        </ol>
+
+        <h4>Points d'attention</h4>
+        <ul>
+          <li>Ne pas cumuler immédiatement immersion, masque entièrement rempli et vidage complet.</li>
+          <li>Surveiller la respiration, la position et les réactions de l'élève.</li>
+          <li>Ne pas laisser l'élève poursuivre s'il retire son détendeur de manière désordonnée ou semble paniquer.</li>
+        </ul>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève accepte une entrée d'eau limitée dans le masque.</li>
+          <li>Il continue à respirer normalement sur détendeur.</li>
+          <li>Il reste attentif au moniteur et sait signaler une difficulté.</li>
+        </ul>
+      </Exercise>
+
+      <Exercise
+        title="Phase 6 — Apprentissage du vidage de masque"
+        duration="8 à 10 min"
+        objective="Vider progressivement le masque par expiration nasale, sans perdre le détendeur ni précipiter la respiration."
+      >
+        <h4>Démonstration du moniteur</h4>
+        <ol>
+          <li>Montrer comment maintenir le masque en place et appuyer doucement sur sa partie supérieure.</li>
+          <li>Expliquer qu'il faut regarder légèrement vers le haut pour faciliter l'évacuation de l'eau.</li>
+          <li>Montrer une expiration contrôlée par le nez, suffisante pour chasser l'eau par le bas du masque.</li>
+          <li>Préciser que l'air doit être expiré progressivement, sans forcer ni interrompre volontairement la respiration.</li>
+        </ol>
+
+        <h4>Déroulement</h4>
+        <ol>
+          <li>Commencer avec une faible quantité d'eau dans le masque.</li>
+          <li>Faire stabiliser l'élève et vérifier qu'il respire calmement sur détendeur.</li>
+          <li>Sur consigne, lui faire incliner légèrement la tête vers le haut et maintenir la partie supérieure du masque.</li>
+          <li>Lui faire expirer doucement par le nez jusqu'à évacuation de l'eau.</li>
+          <li>Vérifier que le masque est correctement repositionné et que l'élève retrouve une vision confortable.</li>
+          <li>Si nécessaire, recommencer avec une quantité d'eau similaire avant d'augmenter progressivement la difficulté.</li>
+        </ol>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève garde son détendeur en bouche.</li>
+          <li>Il maintient une respiration maîtrisée.</li>
+          <li>Il utilise une expiration nasale contrôlée pour chasser l'eau.</li>
+          <li>Il retrouve une vision confortable et confirme que tout va bien.</li>
+        </ul>
+
+        <Callout>
+          Si le vidage complet est trop difficile, revenir à une faible quantité
+          d'eau ou refaire l'exercice en surface. Il vaut mieux consolider le
+          geste que provoquer une situation de panique.
+        </Callout>
+      </Exercise>
+
+      <Exercise
+        title="Phase 7 — Enchaînement et retour aux repères"
+        duration="5 min"
+        objective="Retrouver une situation confortable après le vidage du masque, puis reprendre contact avec le moniteur et son environnement."
+      >
+        <h4>Déroulement</h4>
+        <ol>
+          <li>Faire réaliser un vidage de masque adapté au niveau de l'élève.</li>
+          <li>Après le vidage, demander à l'élève de vérifier son confort respiratoire et la position de son masque.</li>
+          <li>Faire établir un contact visuel avec le moniteur et donner le signe convenu pour indiquer que tout va bien.</li>
+          <li>Demander à l'élève de repérer le moniteur et de suivre une consigne simple, sans ajouter une tâche technique complexe.</li>
+          <li>Terminer l'exercice et remonter selon les consignes de l'encadrant.</li>
+        </ol>
+
+        <h4>Critères de réussite</h4>
+        <ul>
+          <li>L'élève retrouve une respiration calme après le vidage.</li>
+          <li>Il reprend ses repères visuels.</li>
+          <li>Il communique avec le moniteur et suit ses consignes.</li>
+        </ul>
+      </Exercise>
+
+      <Exercise
+        title="Phase 8 — Débriefing"
+        duration="5 min"
+      >
+        <h4>Questions à poser</h4>
+        <ul>
+          <li>Quelle étape t'a demandé le plus d'effort ou de concentration ?</li>
+          <li>Comment as-tu vécu la respiration au tuba sans masque ?</li>
+          <li>As-tu réussi à distinguer la respiration par la bouche des sensations au niveau du nez ?</li>
+          <li>Qu'as-tu ressenti lorsque de l'eau est entrée dans le masque ?</li>
+          <li>Qu'est-ce qui t'a aidé à rester calme pendant le vidage ?</li>
+          <li>À quel moment aurais-tu besoin de demander une pause ou de l'aide ?</li>
+        </ul>
+
+        <h4>Retour du moniteur</h4>
+        <ul>
+          <li>Valoriser les étapes réalisées avec aisance.</li>
+          <li>Identifier les sensations ou les gestes qui restent difficiles.</li>
+          <li>Déterminer si le prochain entraînement peut poursuivre le vidage de masque ou doit revenir à l'accoutumance.</li>
+        </ul>
+      </Exercise>
+    </section>
+
+    <!-- SECTION 4 (GRILLE FACTORISÉE) -->
+    <section id="evaluation" class="card">
+      <h2>4. Grille d'évaluation</h2>
+
+      <p>
+        Grille de suivi pédagogique pour cette séance. Elle ne remplace pas
+        les critères officiels d'acquisition du MFT.
+      </p>
+
+      <EvalTable criteria={evaluationCriteria} />
+
+      <h3>Décision pédagogique</h3>
+      <ul>
+        <li><strong>Acquis :</strong> l'élève accepte l'eau, effectue le geste adapté à son niveau et retrouve son calme.</li>
+        <li><strong>À consolider :</strong> l'élève progresse, mais a encore besoin d'une démonstration, d'une quantité d'eau réduite ou de répétitions supplémentaires.</li>
+        <li><strong>Non acquis :</strong> l'exercice entraîne une gêne importante, une perte de contrôle ou une impossibilité de réaliser le geste sereinement. Revenir à une étape plus simple.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="securite" class="card">
+      <h2>5. Sécurité et points de vigilance</h2>
+
+      <ul>
+        <li>La surveillance de l'encadrant reste continue et rapprochée, y compris pendant les exercices en surface.</li>
+        <li>Ne jamais imposer une immersion ou un vidage de masque à un élève qui manifeste une appréhension importante.</li>
+        <li>Ne pas demander d'hyperventilation ni d'apnée prolongée.</li>
+        <li>Pour les immersions sans bloc, aucune durée n'est imposée : l'élève remonte dès qu'il le souhaite.</li>
+        <li>Ne pas demander d'inspirer par le nez lorsque celui-ci est sous l'eau.</li>
+        <li>Ne pas forcer l'expiration nasale et ne pas augmenter la quantité d'eau si l'élève n'est pas prêt.</li>
+        <li>Lors des exercices équipés, vérifier la stabilité de l'élève, son détendeur et son état général.</li>
+        <li>Interrompre immédiatement en cas de panique, de respiration désordonnée, de gêne respiratoire ou de fatigue inhabituelle.</li>
+        <li>En cas d'échec, revenir à une étape plus simple plutôt que multiplier les tentatives.</li>
+      </ul>
+
+      <Callout title="Priorité absolue">
+        l'élève doit conserver un sentiment de contrôle. Le masque peut être
+        vidé progressivement, mais la sécurité et la confiance passent avant
+        la réussite technique immédiate.
+      </Callout>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="bilan" class="card">
+      <h2>6. Bilan de séance</h2>
+
+      <h3>Acquis à retenir</h3>
+      <ul>
+        <li>L'accoutumance à l'eau est progressive et respecte le rythme de l'élève.</li>
+        <li>La respiration au tuba sans masque aide à découvrir les sensations de l'eau sur le visage.</li>
+        <li>La dissociation nez / bouche se travaille sans forcer l'expiration ni prolonger l'immersion.</li>
+        <li>Le vidage du masque repose sur une expiration nasale contrôlée et une bonne coordination.</li>
+        <li>Après l'exercice, l'élève retrouve ses repères et communique avec le moniteur.</li>
+      </ul>
+
+      <h3>Trace de progression de l'élève</h3>
+      <p><strong>Étape la mieux maîtrisée :</strong></p>
+      <p>....................................................................................................</p>
+
+      <p><strong>Étape à retravailler :</strong></p>
+      <p>....................................................................................................</p>
+
+      <p><strong>Réaction de l'élève face à l'eau dans le masque :</strong></p>
+      <p>....................................................................................................</p>
+
+      <p><strong>Suite proposée :</strong></p>
+      <p>....................................................................................................</p>
+
+      <h3>Références</h3>
+      <ul>
+        <li>
+          <a href="https://mft.ffessm.fr/" target="_blank" rel="noopener noreferrer">
+            Manuel de formation technique (MFT) — FFESSM
+          </a>
+        </li>
+        <li>
+          <a href="https://ffessm.fr/" target="_blank" rel="noopener noreferrer">
+            Fédération française d'études et de sports sous-marins
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <Footer
+      version="1.0"
+      note="Fiche de préparation pédagogique à adapter au niveau réel des élèves, aux conditions du site, au matériel utilisé et aux procédures du club. Elle ne remplace ni le briefing de sécurité ni les exigences du référentiel fédéral en vigueur."
+    />
+  </main>
+</body>
+</html>
