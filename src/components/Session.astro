@@ -1,4 +1,5 @@
 ---
+// src/components/Session.astro
 interface Props {
   id: string;
   title: string;
@@ -25,31 +26,192 @@ const {
 ---
 
 <article class="session">
-  <div class="session-top">
-    <div class="check-wrap">
-      <input type="checkbox" class="session-check" id={id} aria-label={`${title} réalisée`} />
-    </div>
-    <div class="session-main">
-      <h3>{title}</h3>
-      <div class="meta">
-        <span class={`tag ${tagClass}`}>{tagLabel}</span>
-        <span class="tag">{competenceTags}</span>
-      </div>
-      <p>{description}</p>
-      <div class="competence"><strong>MFT associé :</strong> {mftText}</div>
-    </div>
-    <div class="session-actions">
-      <a class="course-link" href={courseUrl}>Ouvrir le cours ↗</a>
-    </div>
+  <!-- LIGNE 1 : Case + Titre (div neutre, aucun héritage du header global) -->
+  <div class="session-title-row">
+    <input type="checkbox" class="session-check" id={id} aria-label={`${title} réalisée`} />
+    <h3 class="session-title">
+      <a href={courseUrl}>{title}</a>
+    </h3>
   </div>
-  <div class="details">
-    <details>
-      <summary>Points de contrôle</summary>
-      <ul>
-        {checkpoints.map((point) => (
-          <li>{point}</li>
-        ))}
-      </ul>
-    </details>
+
+  <!-- LIGNE 2 : Tags à gauche, Lien à droite -->
+  <div class="session-meta-row">
+    <div class="tags">
+      <span class={`tag ${tagClass}`}>{tagLabel}</span>
+      <span class="tag comp-tag">{competenceTags}</span>
+    </div>
+    <a class="course-link" href={courseUrl}>Ouvrir le cours ↗</a>
   </div>
+
+  <!-- LIGNE 3 : Description pleine largeur -->
+  <p class="session-desc">{description}</p>
+
+  <!-- LIGNE 4 : MFT pleine largeur -->
+  <div class="session-mft">
+    <strong>MFT associé :</strong> {mftText}
+  </div>
+
+  <!-- LIGNE 5 : Points de contrôle -->
+  {checkpoints.length > 0 && (
+    <div class="session-details">
+      <details>
+        <summary>Points de contrôle</summary>
+        <ul>
+          {checkpoints.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+      </details>
+    </div>
+  )}
 </article>
+
+<style>
+  .session {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* Ligne 1 : Titre + Case (fond neutre) */
+  .session-title-row {
+    background: transparent;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .session-check {
+    margin-top: 0.25rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .session-title {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    flex: 1;
+  }
+
+  .session-title a {
+    color: #1e293b;
+    text-decoration: none;
+  }
+
+  .session-title a:hover {
+    color: #0b5394;
+    text-decoration: underline;
+  }
+
+  /* Ligne 2 : Deux colonnes */
+  .session-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: transparent;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  .tag.water {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+
+  .tag.land {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .tag.open {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .comp-tag {
+    background: #ede9fe;
+    color: #6d28d9;
+  }
+
+  .course-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0b5394;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .course-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Ligne 3 : Description */
+  .session-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: #334155;
+    background: transparent;
+  }
+
+  /* Ligne 4 : MFT */
+  .session-mft {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #64748b;
+    background: transparent;
+  }
+
+  /* Ligne 5 : Accordéon */
+  .session-details details {
+    font-size: 0.85rem;
+  }
+
+  .session-details summary {
+    cursor: pointer;
+    color: #475569;
+    font-weight: 600;
+    padding: 0.2rem 0;
+    user-select: none;
+  }
+
+  .session-details ul {
+    margin: 0.35rem 0 0 1.25rem;
+    padding: 0;
+    color: #475569;
+  }
+
+  .session-details li {
+    margin-bottom: 0.2rem;
+  }
+</style>
