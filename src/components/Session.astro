@@ -26,7 +26,7 @@ const {
 ---
 
 <article class="session">
-  <!-- LIGNE 1 : Case + Titre (div neutre, aucun héritage du header global) -->
+  <!-- LIGNE 1 : Case + Titre -->
   <div class="session-title-row">
     <input type="checkbox" class="session-check" id={id} aria-label={`${title} réalisée`} />
     <h3 class="session-title">
@@ -34,7 +34,7 @@ const {
     </h3>
   </div>
 
-  <!-- LIGNE 2 : Tags à gauche, Lien à droite -->
+  <!-- LIGNE 2 : Tags à gauche (empilables si besoin) + Lien fixe à droite -->
   <div class="session-meta-row">
     <div class="tags">
       <span class={`tag ${tagClass}`}>{tagLabel}</span>
@@ -78,7 +78,7 @@ const {
     gap: 0.6rem;
   }
 
-  /* Ligne 1 : Titre + Case (fond neutre) */
+  /* Ligne 1 */
   .session-title-row {
     background: transparent;
     display: flex;
@@ -116,21 +116,21 @@ const {
     text-decoration: underline;
   }
 
-  /* Ligne 2 : Deux colonnes */
+  /* Ligne 2 : Grille 2 colonnes */
   .session-meta-row {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
     background: transparent;
   }
 
   .tags {
     display: flex;
+    flex-wrap: wrap; /* Passe à la ligne si nécessaire sans toucher au lien */
     align-items: center;
-    gap: 0.4rem;
-    flex-wrap: wrap;
+    gap: 0.35rem;
+    min-width: 0;
   }
 
   .tag {
@@ -140,6 +140,7 @@ const {
     border-radius: 4px;
     background: #f1f5f9;
     color: #475569;
+    white-space: normal;
   }
 
   .tag.water {
@@ -168,13 +169,15 @@ const {
     color: #0b5394;
     text-decoration: none;
     white-space: nowrap;
+    justify-self: end;
+    flex-shrink: 0;
   }
 
   .course-link:hover {
     text-decoration: underline;
   }
 
-  /* Ligne 3 : Description */
+  /* Ligne 3 */
   .session-desc {
     margin: 0;
     font-size: 0.9rem;
@@ -183,7 +186,7 @@ const {
     background: transparent;
   }
 
-  /* Ligne 4 : MFT */
+  /* Ligne 4 */
   .session-mft {
     margin: 0;
     font-size: 0.82rem;
@@ -192,7 +195,7 @@ const {
     background: transparent;
   }
 
-  /* Ligne 5 : Accordéon */
+  /* Ligne 5 */
   .session-details details {
     font-size: 0.85rem;
   }
@@ -213,5 +216,12 @@ const {
 
   .session-details li {
     margin-bottom: 0.2rem;
+  }
+
+  @media (max-width: 600px) {
+    .session {
+      padding: 0.75rem 0.5rem;
+      gap: 0.5rem;
+    }
   }
 </style>
